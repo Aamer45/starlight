@@ -11,24 +11,63 @@
       text-align: center;
       padding: 50px;
     }
+    .hidden {
+      display: none;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: auto;
+    }
     iframe {
       width: 100%;
-      height: 900px;
+      height: 950px;
       border: none;
+    }
+    .btn {
+      background: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
 
-  <h1>Fill the Form to Generate Your Dataset</h1>
+  <div id="formSection">
+    <h1>Fill the Form to Generate Your Dataset</h1>
+    <iframe
+      src="https://form.jotform.com/250922101796051"
+      frameborder="0"
+      allowtransparency="true"
+      allowfullscreen="true"
+    ></iframe>
+  </div>
 
-  <!-- Embed JotForm -->
-  <iframe
-    src="https://form.jotform.com/250922101796051"
-    frameborder="0"
-    allowtransparency="true"
-    allowfullscreen="true"
-  ></iframe>
+  <div id="resultSection" class="hidden">
+    <div class="card">
+      <h1>🎉 Dataset is Ready!</h1>
+      <p>You can now preview or download the generated dataset.</p>
+      <a class="btn" href="https://nama12.app.n8n.cloud/file/filesystem-v2:workflows/AtAFZxg3U6xxYTrG/executions/343/binary_data/f2c7d734-0b9c-4a2f-a9af-3d697507f465" target="_blank">Preview Dataset</a>
+      <a class="btn" href="https://nama12.app.n8n.cloud/file/filesystem-v2:workflows/AtAFZxg3U6xxYTrG/executions/343/binary_data/f2c7d734-0b9c-4a2f-a9af-3d697507f465" download>Download Dataset</a>
+    </div>
+  </div>
 
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('submitted') === '1') {
+      document.getElementById('formSection').classList.add('hidden');
+      document.getElementById('resultSection').classList.remove('hidden');
+    }
+  </script>
 </body>
 </html>
